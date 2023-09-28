@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable eqeqeq */
 /* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react/react-in-jsx-scope */
 
 import {
   FlatList,
@@ -26,7 +27,7 @@ export default function PostsPage({navigation}: any) {
   let [loader, setloader] = useState(false);
   function GetAllUsers() {
     axios
-      .get('https://jsonplaceholder.typicode.com/users')
+      .get('https://jsonplaceholder.typicode.com/comments?postId=5')
       .then(result => {
         dispatch(UploadData(result.data));
       })
@@ -35,17 +36,17 @@ export default function PostsPage({navigation}: any) {
       });
   }
   useEffect(() => {
-    if (userstate.length === 0) {
+    if (userstate.length == 0) {
       GetAllUsers();
     }
     GetData();
   }, []);
 
   async function GetData(refreshloader = false) {
-    if (refreshloader || state.length === 0) {
+    if (refreshloader || state.length == 0) {
       setloader(true);
       axios
-        .get('https://jsonplaceholder.typicode.com/posts')
+        .get('https://jsonplaceholder.typicode.com/comments?postId=5')
         .then(result => {
           let response: Posts[] = result.data;
           let sortdata = response.sort((a, b) => {
@@ -105,11 +106,11 @@ export default function PostsPage({navigation}: any) {
               </View>
             }
             contentContainerStyle={
-              state.length === 0
+              state.length == 0
                 ? {flex: 1}
                 : {paddingTop: 20, paddingHorizontal: 15}
             }
-            data={state.filter(x => x.status === 1)}
+            data={state.filter(x => x.status == 1)}
             renderItem={({item, index}) => {
               return (
                 <View
@@ -159,7 +160,7 @@ export default function PostsPage({navigation}: any) {
                       }}>
                       <Text style={{color: 'black'}}>Username: </Text>
                       <Text>
-                        {userstate.filter(x => x.id === item.userId)[0].name}
+                        {userstate.filter(x => x.id == item.userId)[0].name}
                       </Text>
                     </Text>
                   </View>
@@ -212,9 +213,6 @@ export default function PostsPage({navigation}: any) {
                       </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                      onPress={() => {
-                        navigation.push('SubPosts');
-                      }}
                       style={{
                         marginBottom: 10,
                         width: 80,
@@ -233,17 +231,6 @@ export default function PostsPage({navigation}: any) {
                         Comments
                       </Text>
                     </TouchableOpacity>
-                    {/* <ButtonComponent
-                      text="Comments"
-                      backgroundcolor="green"
-                      fontsize={15}
-                      height={50}
-                      width={80}
-                      borderradius={20}
-                      ClickEvent={() => {
-                        navigation.push('PostForm');
-                      }}
-                    /> */}
                   </View>
                 </View>
               );
