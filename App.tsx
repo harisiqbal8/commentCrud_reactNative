@@ -39,7 +39,7 @@ function App(): JSX.Element {
           <Stack.Screen name="UserForm" component={UserForm} options={{ title: "Users", headerStyle: { backgroundColor: "#565656" }, headerShadowVisible: false, headerTintColor: 'white', headerTitleAlign: 'center' }} />
           <Stack.Screen name="Posts" component={PostsPage} />
           <Stack.Screen name="PostForm" component={PostForm} />
-          <Stack.Screen name="SubPost" component={SubPosts} />
+          <Stack.Screen name="SubPosts" component={SubPosts} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

@@ -19,7 +19,7 @@ import axios from 'axios';
 import {UpdateList, Posts, DeletePost} from '../Redux/PostSlice';
 import ButtonComponent from '../Components/Button';
 import {UploadData} from '../Redux/UserDataSlice';
-export default function PostsPage({navigation}: any) {
+export default function SubPosts({navigation}: any) {
   let userstate = useAppSelector(state => state.DummyUser.UserList);
   let state = useAppSelector(state => state.Posts.PostList);
   let dispatch = useAppDispatch();
