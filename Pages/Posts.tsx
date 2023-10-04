@@ -213,7 +213,7 @@ export default function PostsPage({navigation}: any) {
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => {
-                        navigation.push('SubPosts');
+                        navigation.push('PostForm', {Id: item.id});
                       }}
                       style={{
                         marginBottom: 10,
